@@ -24,7 +24,7 @@
 
 		<div class="container">
 			<div class="row text-center">
-		  		<div class="col-sm-3">
+		  		<div>
 		  			<h1>BOOK FINDER</h1>
 		  				<!-- user input -->
 		    			<input id="search" placeholder="Title or Author" autofocus/>
@@ -32,24 +32,27 @@
 		    			<!-- user submit -->
 						<button id="searchBtn" class="btn btn-primary btn-lg btn-block">SEARCH</button>
 		  		</div>
-		  			<div class="col-sm-9">
-		    <!-- display results -->
-		    		<div id="results"></div>
 			  		</div>
-			</div>
+	<!-- Here's the Bootstrap divs and classes that ensure the created divs and attached elements in the bookSearch function line up well -->
+			    <!-- display results -->
+
+	<div class="container">
+		<div id="results" class="row equal">
+			
 		</div>
+			</div>
 
 
 <!--Scripts  -->
 			<!-- Vue.js -->
-			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-			<!--jquery updated non-slim -->
+<!-- 			<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+ -->			<!--jquery updated non-slim -->
 			<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   			<!--popper  -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-			<!--bootstrap  -->
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-			<!-- Custom JS -->
+<!-- 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+ -->			<!--bootstrap  -->
+<!-- 			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+ -->			<!-- Custom JS -->
 			<script type="text/javascript" src="js/main.js"></script>
 	</body>
 </html>

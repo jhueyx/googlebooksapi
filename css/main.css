@@ -1,0 +1,58 @@
+/*This gives us the lovely patterend paper background*/
+body {
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDiN89Dn3QKom6op0wMBUzubeUzZivC88uTu6y9aNJOAyKJh1q5g")
+}
+
+/*This gives us a fun font and appropriate size for the h1 element*/
+h1 {
+	font-family: 'roboto';
+	font-size: 100px;
+}
+
+/*This puts the placeholder text in the middle of the input search box*/
+input {
+	text-align: center;
+}
+
+/*This gives our input box and button a lovely rounded look*/
+input,
+button {
+	border-radius: 5px;
+	font-size: 25px;
+}
+
+/*This aligns our h1, input box, and button in the center of the page*/
+#nav {
+	text-align: center;
+	margin-top: 50px;
+}
+
+/*This makes our created divs line up horizontally*/
+.equal {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+}
+
+/*This gives our created divs a nice look*/
+.results {
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+	background-color: white;
+	margin: 1%;
+	width: 22%;
+}
+
+/*This gives us a little space between the images and titles of our created div content*/
+img,
+p {
+	margin-top: 10px;
+}
+
+.animated {
+	animation-duration: 2s;
+}
+
+
+

@@ -1,81 +1,71 @@
-function bookSearch(){
-	// store user input
-	var search = document.getElementById("search").value;
-	// clear any previous data
-	document.getElementById("results").innerHTML = "";
+$( "#search" ).keyup(function(e) {
+  if(e.which === 13) {
+  	bookSearch();
+  }
+});
 
-	// make a data request
+//functio n to do the book search
+
+function bookSearch() {
+	// Check to see if the results div has content already
+	if(document.getElementById("results").innerHTML !== '') {
+		document.getElementById("results").innerHTML = '';
+	}
+
+	// Create variable to store input value in search
+	var search = document.getElementById("search").value
+
+	console.log(search)
+
+	// Initiate ajax call
 	$.ajax({
-		// url for database
-    url: "https://www.googleapis.com/books/v1/volumes?q=" + search,
-    dataType: "json",
-    type: 'GET',
-    // on success, do this
-    success: function(data) {
-			// display data being passed through
-			console.log(data);
+		// Here's the URL to use plus the results of the input variable as the query info
+		url: "https://www.googleapis.com/books/v1/volumes?q=" + search + "&maxResults=40",
+		// Here's the type of data file returned
+		dataType: "json",
 
-	    // loop through data in data.items
-	    for(var i = 0; i < data.items.length; i++){
-	   		// store current books volume info
-	   		var jdata = data.items[i].volumeInfo;
+		success: function(data){
+			// Console log data to see properties available
+			console.log(data)
 
-	   		// create elements
-	   		var newColSm4 = document.createElement('div');
-	   		var newImg    = document.createElement('img');
-	   		var newH2     = document.createElement('h2');
-	   		var newH3     = document.createElement('h3');
-	   		var newH4     = document.createElement('h4');
-	   		var newAnchor = document.createElement('a');
+			// Loop through returned data to display info
+			for(i = 0; i < data.items.length; i++) {
 
-	   		// add classes to elements
-	   		newColSm4.className = 'col-sm-12 col-md-8 col-md-offset-2 item';
-	   		newAnchor.className = 'btn btn-primary';
+				// Create new div, h2, h3 & img elements
+				var results = document.getElementById("results")
+				var newDiv = document.createElement("div")
+				var newImg = document.createElement("img")
+				var newAuthor = document.createElement("p")
+				var newTitle = document.createElement("h2")
 
-	   		// add text to tags
-	   		newH2.innerText = jdata.title;
-	   		newAnchor.innerText = 'Learn More';
+				// Create any classes needed and attach to elements
+				newDiv.className = "col-md-3 results animated fadeIn"
 
-	   		// add attributes
-	   		newAnchor.href = jdata.infoLink;
-	   		newAnchor.setAttribute('target', '_blank');
+				// Create text nodes for each element using data pull
+				var newAuthorText = document.createTextNode(data.items[i].volumeInfo.authors)
+				var newTitleText = document.createTextNode(data.items[i].volumeInfo.title)
 
-	   		// create image if one exists
-	   		if(jdata.imageLinks) {
-		   		newImg.src = jdata.imageLinks.thumbnail;
-	   		} else {
-		   		newImg.src = 'img/nobook.jpg';
-	   		};
+				// Append textNodes to elements
+				newAuthor.appendChild(newAuthorText)
+				newTitle.appendChild(newTitleText)
 
-	   		// create publish date if one exists
-	   		if(jdata.publishedDate) {
-	   			newH4.innerText = jdata.publishedDate;
-	   		} else {
-	   			newH4.innerText = 'no publish date found';
-	   		};
+				// Add src attribute to img element
+				newImg.setAttribute("src", data.items[i].volumeInfo.imageLinks.thumbnail)
 
-	   		// create author if one exists
-	   		if(jdata.authors) {
-		   		newH3.innerText = jdata.authors[0];
-	   		} else {
-		   		newH3.innerText = 'no author found';
-	   		};
+				// Append created h2, h3 & img elements to div element
+				newDiv.appendChild(newImg)
+				newDiv.appendChild(newAuthor)
+				newDiv.appendChild(newTitle)
 
-	   		// add tags to document
-	   		newColSm4.appendChild(newImg);
-	   		newColSm4.appendChild(newH2);
-	   		newColSm4.appendChild(newH3);
-	   		newColSm4.appendChild(newH4);
-	   		newColSm4.appendChild(newAnchor);
+				// Append created div element(s) to listing div 
+				results.appendChild(newDiv)
 
-	   		// add results to the screen
-	   		var results = document.getElementById("results");
-	   		results.appendChild(newColSm4);
-	    };
-    }
+			}
+		},
+
+		// Here's the type of server request (it gets the data)
+		type: "GET"
 	});
-};
 
-// add event to element with id="button"
-var searchBtn = document.getElementById('searchBtn');
-searchBtn.addEventListener('click', bookSearch, false);
+	var form = document.getElementById("search").value = '';
+}	
